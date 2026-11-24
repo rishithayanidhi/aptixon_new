@@ -149,22 +149,22 @@ function createGoogleFormPayload(
   tokens: GoogleFormTokens,
 ) {
   const params = new URLSearchParams();
-  params.set("entry.53807555", submission.fullName);
-  params.set("entry.1672214698", submission.companyName);
-  params.set("entry.466175216", submission.emailAddress);
-  params.set("entry.493934982", submission.contactNumber);
-  params.set("entry.962597741", submission.websiteType);
-  params.set("entry.234746216", submission.pageCount);
+  params.set("entry.1325621646", submission.fullName);
+  params.set("entry.1958715378", submission.companyName);
+  params.set("entry.18689768", submission.emailAddress);
+  params.set("entry.1758816324", submission.contactNumber);
+  params.set("entry.443771765", submission.websiteType);
+  params.set("entry.796019985", submission.pageCount);
   submission.features.forEach((feature) =>
-    params.append("entry.1729085897", feature),
+    params.append("entry.244291932", feature),
   );
-  params.set("entry.1445211485", submission.budget);
-  params.set("entry.303856225", submission.timeline);
-  params.set("entry.1728023544", submission.domainStatus);
-  params.set("entry.1554864238", submission.hostingStatus);
-  params.set("entry.2063013469", submission.contentStatus);
-  params.set("entry.2036019432", submission.designPreference);
-  params.set("entry.1260296901", submission.additionalRequirements);
+  params.set("entry.1506802998", submission.budget);
+  params.set("entry.9172891", submission.timeline);
+  params.set("entry.1448746584", submission.domainStatus);
+  params.set("entry.1635398983", submission.hostingStatus);
+  params.set("entry.482358021", submission.contentStatus);
+  params.set("entry.623780500", submission.designPreference);
+  params.set("entry.1988795263", submission.additionalRequirements);
   params.set("fvv", tokens.fvv);
   params.set("pageHistory", tokens.pageHistory);
   params.set("fbzx", tokens.fbzx);
@@ -193,6 +193,7 @@ export async function POST(request: Request) {
   }
 
   const formId = process.env.INFOTECH_QUOTE_FORM_ID?.trim();
+  console.log("INFOTECH_QUOTE_FORM_ID:", formId);
   if (!formId || !/^[A-Za-z0-9_-]+$/.test(formId)) {
     console.error("INFOTECH_QUOTE_FORM_ID is missing or invalid.");
     return NextResponse.json(
