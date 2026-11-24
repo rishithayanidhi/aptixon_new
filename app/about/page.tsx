@@ -23,12 +23,9 @@ export default function About() {
               solutions that make a difference.
             </p>
           </div>
-          <div className="about-visual">
-            <div className="orbit">
-              A<span>APTIXON</span>
-            </div>
-            <p>TOGETHER WE BUILD BETTER WORLD</p>
-          </div>
+          <span className="about-visual">
+              <img src="/images/about_us.jpeg" alt="Aptixon" />
+          </span>
         </div>
       </section>
       <section className="content-section soft">

@@ -23,10 +23,10 @@ export default function Contact() {
               <Mail />
               <div>
                 <b>Email</b>
-                <span>Use the enquiry form to reach our team.</span>
+                <span>administrator@aptixon.com</span>
               </div>
             </div>
-            <div className="contact-method">
+            {/* <div className="contact-method">
               <Phone />
               <div>
                 <b>Phone</b>
@@ -34,14 +34,31 @@ export default function Contact() {
                   Contact details can be configured by the site administrator.
                 </span>
               </div>
-            </div>
+            </div> */}
             <div className="contact-method">
               <MapPin />
               <div>
                 <b>Location</b>
-                <span>India</span>
+                <span>Banaswadi, Bengaluru, Karnataka, India</span>
               </div>
             </div>
+            <div className="contact-map-frame">
+              <iframe
+                title="Map showing Banaswadi, Bengaluru, Karnataka"
+                src="https://maps.google.com/maps?q=13.0103761%2C77.6481944&z=14&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+            {/* <a
+              className="contact-map-link"
+              href="https://maps.app.goo.gl/SUw2FTJeDYJtT1XN8"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open in Google Maps
+            </a> */}
           </div>
           <form
             className="form-card"
