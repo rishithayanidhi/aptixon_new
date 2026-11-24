@@ -1,0 +1,107 @@
+export const infotechQuoteOptions = {
+  websiteTypes: [
+    "Business / Corporate Website",
+    "E-commerce Website",
+    "Portfolio / Personal Website",
+    "Educational / Learning Website",
+    "Blog / News Website",
+    "Real Estate Website",
+    "Healthcare / Hospital Website",
+    "Restaurant / Food Ordering Website",
+    "Booking / Appointment Website",
+    "Landing Page",
+    "Custom Web Application",
+    "Other",
+  ],
+  pageCounts: [
+    "1 Page (Landing Page)",
+    "2 – 5 Pages",
+    "6 – 10 Pages",
+    "11 – 15 Pages",
+    "16 – 25 Pages",
+    "More than 25 Pages",
+    "Not Sure – Need Consultation",
+  ],
+  features: [
+    "Mobile & Tablet Responsive Design",
+    "Contact Form",
+    "Google Maps Integration",
+    "Social Media Integration",
+    "WhatsApp Integration",
+    "Image Gallery",
+    "Admin Dashboard / CMS",
+    "User Registration & Login",
+    "Customer Dashboard",
+    "Online Payment Gateway",
+    "Product / Service Management",
+    "Booking & Appointment System",
+    "Search & Filter Functionality",
+    "Email & SMS Notifications",
+    "Live Chat Support",
+    "Blog / News Management",
+    "SEO Optimization",
+    "Multi-language Support",
+    "Analytics Integration",
+    "Third-party API Integration",
+    "Database Integration",
+    "Custom Features",
+  ],
+  budgets: [
+    "Below ₹20,000",
+    "₹20,000 – ₹30,000",
+    "₹30,000 – ₹50,000",
+    "₹50,000 – ₹75,000",
+    "₹75,000 – ₹1,00,000",
+    "₹1,00,000 – ₹2,00,000",
+    "Above ₹2,00,000",
+    "Need a Cost Estimation",
+  ],
+  timelines: [
+    "Within 1 Week",
+    "Within 2 Weeks",
+    "Within 3 Weeks",
+    "Within 1 Month",
+    "1 – 2 Months",
+    "More than 2 Months",
+    "Flexible – Based on Project Requirements",
+  ],
+  domainOptions: [
+    "Yes, I already have a domain",
+    "No, I need a domain",
+    "Need assistance",
+  ],
+  hostingOptions: [
+    "Yes, I already have hosting",
+    "No, I need hosting",
+    "Need assistance",
+  ],
+  contentOptions: [
+    "All content is ready",
+    "Partially ready",
+    "Content needs to be created",
+    "Need content writing assistance",
+  ],
+  designOptions: [
+    "I have reference websites",
+    "I have a design concept",
+    "I need Aptixon to suggest a design",
+    "I need a completely custom design",
+  ],
+} as const;
+
+export type InfotechQuoteSubmission = {
+  fullName: string;
+  companyName: string;
+  emailAddress: string;
+  contactNumber: string;
+  websiteType: string;
+  pageCount: string;
+  features: string[];
+  budget: string;
+  timeline: string;
+  domainStatus: string;
+  hostingStatus: string;
+  contentStatus: string;
+  designPreference: string;
+  additionalRequirements: string;
+};

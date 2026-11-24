@@ -911,7 +911,7 @@ svg {
   color: #d8e5f6;
   font-size: 13px;
 }
-.infotech-project-card > a {
+.infotech-project-card > .infotech-project-quote {
   min-height: 48px;
   display: flex;
   align-items: center;
@@ -920,6 +920,16 @@ svg {
   color: #092a52;
   background: #62ed55;
   border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.infotech-project-quote {
+  color: #092a52;
+  background: #62ed55;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 800;
 }
@@ -972,6 +982,377 @@ svg {
   width: 14px;
   height: 14px;
   color: #28bd3c;
+}
+
+.quote-request-hero {
+  padding: 60px 0 66px;
+  color: #fff;
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(52, 194, 42, 0.16),
+      transparent 25%
+    ),
+    linear-gradient(115deg, #061b43, #0b3670);
+}
+
+.quote-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 30px;
+  color: #dce7f8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.quote-request-hero h1 {
+  margin: 0 0 12px;
+  font:
+    800 clamp(38px, 5vw, 56px) / 1.08 "Manrope",
+    sans-serif;
+  letter-spacing: -1.5px;
+}
+
+.quote-request-hero p {
+  max-width: 650px;
+  margin: 0;
+  color: #dce7f8;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.quote-request-content {
+  padding: 64px 0 78px;
+  background: #f5f8fc;
+}
+
+.quote-request-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: start;
+  gap: 42px;
+}
+
+.quote-request-aside {
+  padding: 20px 8px 20px 0;
+}
+
+.quote-request-aside h2 {
+  max-width: 390px;
+  margin: 0 0 14px;
+  color: var(--navy);
+  font:
+    800 32px/1.18 "Manrope",
+    sans-serif;
+}
+
+.quote-request-aside > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.quote-request-aside ul {
+  display: grid;
+  gap: 18px;
+  margin: 28px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-request-aside li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #34445d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.quote-request-aside li svg {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  color: var(--green-dark);
+}
+
+.quote-aside-note {
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+  color: #506078;
+  background: #eaf5e7;
+  border: 1px solid #dcefd7;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.quote-aside-note strong {
+  color: #203d2a;
+}
+
+.quote-form-card {
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e6ebf2;
+  border-radius: 18px;
+  box-shadow: 0 16px 42px rgba(12, 36, 64, 0.08);
+}
+
+.quote-form-heading {
+  margin-bottom: 24px;
+}
+
+.quote-form-heading .eyebrow {
+  margin-bottom: 8px;
+}
+
+.quote-form-heading h2,
+.quote-form-confirmation h2 {
+  margin: 0 0 7px;
+  color: var(--navy);
+  font:
+    800 25px/1.25 "Manrope",
+    sans-serif;
+}
+
+.quote-form-heading p,
+.quote-form-confirmation p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.quote-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 16px;
+}
+
+.quote-form-section {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #e8edf3;
+}
+
+.quote-form-section > h3 {
+  margin: 0 0 6px;
+  color: #172d56;
+  font:
+    800 18px "Manrope",
+    sans-serif;
+}
+
+.quote-section-description {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.quote-field {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.quote-field-full {
+  grid-column: 1 / -1;
+}
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 13px;
+  color: #17233a;
+  background: #fff;
+  border: 1px solid #d8e0ea;
+  border-radius: 9px;
+  outline: none;
+  font:
+    400 14px "DM Sans",
+    sans-serif;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.quote-field textarea {
+  min-height: 125px;
+  resize: vertical;
+}
+
+.quote-choice-fieldset {
+  min-width: 0;
+  margin: 24px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.quote-choice-fieldset legend {
+  width: 100%;
+  margin-bottom: 12px;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.quote-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.quote-option-card {
+  min-height: 44px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  color: #46546a;
+  background: #fbfcfe;
+  border: 1px solid #e4eaf1;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.quote-option-card:has(input:checked) {
+  color: #1d5426;
+  background: #f0faed;
+  border-color: #7bcf70;
+}
+
+.quote-option-card input,
+.quote-feature-option input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin: 1px 0 0;
+  accent-color: var(--green-dark);
+}
+
+.quote-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px 12px;
+}
+
+.quote-feature-option {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 6px 2px;
+  color: #46546a;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.quote-form-error {
+  margin: 12px 0 0;
+  color: #b42318;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.quote-field input::placeholder,
+.quote-field textarea::placeholder {
+  color: #9aa5b5;
+}
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+  border-color: #37b83a;
+  box-shadow: 0 0 0 3px rgba(55, 184, 58, 0.12);
+}
+
+.quote-form-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #edf0f4;
+}
+
+.quote-form-submit-row > p {
+  max-width: 290px;
+  margin: 0;
+  color: #758196;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.quote-submit-button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 20px;
+  color: #fff;
+  background: var(--green-dark);
+  border: 0;
+  border-radius: 999px;
+  font:
+    700 14px "DM Sans",
+    sans-serif;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.quote-submit-button:hover {
+  transform: translateY(-2px);
+  background: #176f26;
+}
+
+.quote-form-confirmation {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.quote-confirmation-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  color: #218b31;
+  background: #eaf8eb;
+  border-radius: 50%;
+}
+
+.quote-confirmation-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.quote-form-confirmation .quote-submit-button {
+  margin-top: 22px;
 }
 
 .business-overview-hero {
@@ -2797,9 +3178,56 @@ svg {
     width: 62px;
     height: 62px;
   }
-  .infotech-project-card > a {
+  .infotech-project-card > .infotech-project-quote {
     grid-column: 1 / -1;
     justify-content: center;
+  }
+  .quote-request-hero {
+    padding: 46px 0 52px;
+  }
+  .quote-back-link {
+    margin-bottom: 22px;
+  }
+  .quote-request-content {
+    padding: 42px 0 54px;
+  }
+  .quote-request-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .quote-request-aside {
+    padding: 0;
+  }
+  .quote-request-aside h2 {
+    font-size: 28px;
+  }
+  .quote-request-aside ul {
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .quote-form-card {
+    padding: 22px;
+  }
+  .quote-form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .quote-choice-grid,
+  .quote-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .quote-field-full {
+    grid-column: auto;
+  }
+  .quote-form-submit-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .quote-form-submit-row > p {
+    max-width: none;
+  }
+  .quote-submit-button {
+    width: 100%;
   }
   .infotech-footer-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -114,7 +114,10 @@ export default async function BusinessPage({
                 in the digital world.
               </p>
               <div className="infotech-actions">
-                <Link className="infotech-primary" href="/contact">
+                <Link
+                  className="infotech-primary"
+                  href="/businesses/infotech/request-a-quote"
+                >
                   Request a Quote
                   <ArrowRight size={17} />
                 </Link>
@@ -266,7 +269,10 @@ export default async function BusinessPage({
                 <h2>Have a Project in Mind?</h2>
                 <p>Let's turn your idea into a powerful digital solution.</p>
               </div>
-              <Link href="/contact">
+              <Link
+                className="infotech-project-quote"
+                href="/businesses/infotech/request-a-quote"
+              >
                 Request a Quote
                 <ArrowRight size={17} />
               </Link>
