@@ -194,6 +194,7 @@ export async function POST(request: Request) {
 
   const formId = process.env.INFOTECH_QUOTE_FORM_ID?.trim();
   if (!formId || !/^[A-Za-z0-9_-]+$/.test(formId)) {
+    console.error("INFOTECH_QUOTE_FORM_ID is missing or invalid.");
     return NextResponse.json(
       { ok: false, message: "The quote form is not configured." },
       { status: 503 },
@@ -201,12 +202,14 @@ export async function POST(request: Request) {
   }
 
   const formBaseUrl = `https://docs.google.com/forms/d/e/${formId}`;
+  
   let tokens: GoogleFormTokens | null;
   try {
     tokens = await loadGoogleFormTokens(
       `${formBaseUrl}/viewform?usp=send_form`,
     );
-  } catch {
+  } catch (error) {
+    console.error("Google Forms form-page request failed.", error);
     return NextResponse.json(
       {
         ok: false,
@@ -237,7 +240,8 @@ export async function POST(request: Request) {
       cache: "no-store",
       signal: AbortSignal.timeout(15000),
     });
-  } catch {
+  } catch (error) {
+    console.error("Google Forms submission request failed.", error);
     return NextResponse.json(
       {
         ok: false,
