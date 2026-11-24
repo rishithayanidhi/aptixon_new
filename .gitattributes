@@ -1,0 +1,10 @@
+# Normalize text files in the Git repository
+* text=auto
+
+# Keep shell scripts with LF line endings
+*.sh text eol=lf
+
+# Keep Windows-style line endings for Windows shell files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
