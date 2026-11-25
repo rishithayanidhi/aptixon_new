@@ -146,6 +146,24 @@ async function loadGoogleFormTokens(viewFormUrl: string) {
   return { fbzx, partialResponse, pageHistory, fvv } satisfies GoogleFormTokens;
 }
 
+function parseGoogleFormTokens(value: unknown): GoogleFormTokens | null {
+  if (!isRecord(value)) return null;
+
+  const fbzx = readText(value.fbzx, 2000);
+  const partialResponse = readText(value.partialResponse, 10000);
+  const pageHistory = readText(value.pageHistory, 1000);
+  const fvv = readText(value.fvv, 100);
+
+  if (!fbzx || !partialResponse || !pageHistory || !fvv) return null;
+  return { fbzx, partialResponse, pageHistory, fvv };
+}
+
+function getFormBaseUrl() {
+  const formId = process.env.INFOTECH_QUOTE_FORM_ID?.trim();
+  if (!formId || !/^[A-Za-z0-9_-]+$/.test(formId)) return null;
+  return `https://docs.google.com/forms/d/e/${formId}`;
+}
+
 function createGoogleFormPayload(
   submission: InfotechQuoteSubmission,
   tokens: GoogleFormTokens,
@@ -175,6 +193,42 @@ function createGoogleFormPayload(
   return params;
 }
 
+export async function GET() {
+  const formBaseUrl = getFormBaseUrl();
+  if (!formBaseUrl) {
+    console.error("INFOTECH_QUOTE_FORM_ID is missing or invalid.");
+    return NextResponse.json(
+      { ok: false, message: "The quote form is not configured." },
+      { status: 503 },
+    );
+  }
+
+  let tokens: GoogleFormTokens | null;
+  try {
+    tokens = await loadGoogleFormTokens(
+      `${formBaseUrl}/viewform?usp=send_form`,
+    );
+  } catch (error) {
+    console.error("Google Forms form-page request failed.", error);
+    return NextResponse.json(
+      { ok: false, message: "Unable to reach the quote form. Please try again." },
+      { status: 502 },
+    );
+  }
+
+  if (!tokens) {
+    return NextResponse.json(
+      { ok: false, message: "Unable to prepare the quote form submission." },
+      { status: 502 },
+    );
+  }
+
+  return NextResponse.json(
+    { ok: true, tokens },
+    { headers: { "Cache-Control": "no-store" } },
+  );
+}
+
 export async function POST(request: Request) {
   let requestBody: unknown;
   try {
@@ -194,9 +248,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const formId = process.env.INFOTECH_QUOTE_FORM_ID?.trim();
-  console.log("INFOTECH_QUOTE_FORM_ID:", formId);
-  if (!formId || !/^[A-Za-z0-9_-]+$/.test(formId)) {
+  const formBaseUrl = getFormBaseUrl();
+  if (!formBaseUrl) {
     console.error("INFOTECH_QUOTE_FORM_ID is missing or invalid.");
     return NextResponse.json(
       { ok: false, message: "The quote form is not configured." },
@@ -204,22 +257,24 @@ export async function POST(request: Request) {
     );
   }
 
-  const formBaseUrl = `https://docs.google.com/forms/d/e/${formId}`;
-  
-  let tokens: GoogleFormTokens | null;
-  try {
-    tokens = await loadGoogleFormTokens(
-      `${formBaseUrl}/viewform?usp=send_form`,
-    );
-  } catch (error) {
-    console.error("Google Forms form-page request failed.", error);
-    return NextResponse.json(
-      {
-        ok: false,
-        message: "Unable to reach the quote form. Please try again.",
-      },
-      { status: 502 },
-    );
+  let tokens = parseGoogleFormTokens(
+    isRecord(requestBody) ? requestBody.googleFormTokens : undefined,
+  );
+  if (!tokens) {
+    try {
+      tokens = await loadGoogleFormTokens(
+        `${formBaseUrl}/viewform?usp=send_form`,
+      );
+    } catch (error) {
+      console.error("Google Forms form-page request failed.", error);
+      return NextResponse.json(
+        {
+          ok: false,
+          message: "Unable to reach the quote form. Please try again.",
+        },
+        { status: 502 },
+      );
+    }
   }
 
   if (!tokens) {

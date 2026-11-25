@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Code2 } from "lucide-react";
+import { ArrowRight, Check, Code2 } from "lucide-react";
 
 const services = [
   {
@@ -85,6 +85,32 @@ export function InfotechServices() {
               </article>
             );
           })}
+          <aside className="infotech-service-highlight">
+            <div>
+              <span className="infotech-service-highlight-label">
+                BUILT FOR YOUR BUSINESS
+              </span>
+              <h3>A stronger website starts here.</h3>
+              <p>
+                Thoughtful design and dependable technology, tailored to your
+                goals.
+              </p>
+            </div>
+            <ul>
+              <li>
+                <Check aria-hidden="true" />
+                Responsive on every screen
+              </li>
+              <li>
+                <Check aria-hidden="true" />
+                Fast, reliable performance
+              </li>
+              <li>
+                <Check aria-hidden="true" />
+                Secure and ready to grow
+              </li>
+            </ul>
+          </aside>
         </div>
       </div>
     </section>

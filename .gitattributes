@@ -1,6 +1,19 @@
 # Normalize text files in the Git repository
 * text=auto
 
+# Keep source and configuration files with LF line endings on every platform
+*.css text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.mjs text eol=lf
+*.sql text eol=lf
+*.toml text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.yml text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+
 # Keep shell scripts with LF line endings
 *.sh text eol=lf
 

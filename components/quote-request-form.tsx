@@ -7,6 +7,39 @@ import {
   infotechQuoteOptions,
 } from "@/lib/infotech-quote-options";
 
+type GoogleFormTokens = {
+  fbzx: string;
+  partialResponse: string;
+  pageHistory: string;
+  fvv: string;
+};
+
+function isGoogleFormTokens(value: unknown): value is GoogleFormTokens {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "fbzx" in value &&
+    typeof value.fbzx === "string" &&
+    "partialResponse" in value &&
+    typeof value.partialResponse === "string" &&
+    "pageHistory" in value &&
+    typeof value.pageHistory === "string" &&
+    "fvv" in value &&
+    typeof value.fvv === "string"
+  );
+}
+
+function readGoogleFormTokens(value: unknown): GoogleFormTokens | null {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "tokens" in value &&
+    isGoogleFormTokens(value.tokens)
+  )
+    ? value.tokens
+    : null;
+}
+
 function ChoiceGroup({
   name,
   legend,
@@ -42,12 +75,46 @@ export function QuoteRequestForm() {
   const [submitError, setSubmitError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState("");
+  const [googleFormTokens, setGoogleFormTokens] =
+    useState<GoogleFormTokens | null>(null);
 
   useEffect(() => {
     if (!toast) return;
     const timeoutId = window.setTimeout(() => setToast(""), 4000);
     return () => window.clearTimeout(timeoutId);
   }, [toast]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    void fetch("/api/infotech-quote", {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          console.error(
+            `Quote form token preload failed with status ${response.status}.`,
+          );
+          return;
+        }
+
+        const result: unknown = await response.json();
+        const tokens = readGoogleFormTokens(result);
+        if (!tokens) {
+          console.error("Quote form token preload returned invalid data.");
+          return;
+        }
+
+        setGoogleFormTokens(tokens);
+      })
+      .catch((error: unknown) => {
+        if (!controller.signal.aborted) {
+          console.error("Quote form token preload failed.", error);
+        }
+      });
+
+    return () => controller.abort();
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -102,6 +169,7 @@ export function QuoteRequestForm() {
       contentStatus: readField("contentStatus"),
       designPreference: readField("designPreference"),
       additionalRequirements: readField("additionalRequirements"),
+      googleFormTokens,
     };
 
     try {
