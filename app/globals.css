@@ -326,29 +326,27 @@ svg {
   padding: 42px 0 34px;
 }
 
-.infotech-pill {
-  display: inline-flex;
-  margin-bottom: 14px;
-  padding: 7px 14px;
-  color: #092a52;
-  background: #71f164;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-}
-
 .infotech-hero-copy h1 {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   font:
-    800 clamp(42px, 4.4vw, 58px) / 0.98 "Manrope",
+    800 clamp(42px, 4.4vw, 58px) / 1.02 "Manrope",
     sans-serif;
   letter-spacing: -2px;
 }
 
-.infotech-hero-copy h1 strong {
+.infotech-hero-copy h1 span {
   color: #69ee63;
   font-weight: 800;
+}
+
+.infotech-hero-copy h2 {
+  max-width: 560px;
+  margin: 0 0 14px;
+  color: #f0f5ff;
+  font:
+    700 clamp(20px, 2.2vw, 27px) / 1.2 "Manrope",
+    sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .infotech-hero-copy > p {
@@ -653,85 +651,10 @@ svg {
   font-size: 13px;
 }
 
-.infotech-location {
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  text-align: right;
-}
-.infotech-location > label,
-.infotech-location > div {
-  display: grid;
-  gap: 5px;
-}
-.infotech-location > label > span:first-child,
-.infotech-location > div > span {
-  color: #536177;
-  font-size: 10px;
-  font-weight: 800;
-}
-.location-select-wrap,
-.currency-display {
-  min-height: 36px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 10px;
-  color: #1c2a43;
-  background: #fff;
-  border: 1px solid #e7ecf2;
-  border-radius: 7px;
-  font-size: 11px;
-  font-weight: 800;
-}
-.location-select-wrap {
-  position: relative;
-}
-.location-select-wrap select {
-  min-width: 105px;
-  appearance: none;
-  padding: 0 16px 0 0;
-  color: inherit;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  font: inherit;
-  cursor: pointer;
-}
-.location-select-wrap > svg {
-  position: absolute;
-  right: 8px;
-  pointer-events: none;
-}
-.currency-display {
-  justify-content: center;
-  min-width: 72px;
-  margin: 0;
-  color: #19304e;
-  background: #e9f9e3;
-  border-color: #e9f9e3;
-  font-style: normal;
-}
-.location-flag {
-  width: 23px;
-  height: 20px;
-  display: grid;
-  place-items: center;
-  font-size: 16px;
-  line-height: 1;
-}
-
 .infotech-services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-}
-
-.infotech-currency-note {
-  margin: 12px 0 0;
-  color: #78859a;
-  font-size: 11px;
-  text-align: right;
 }
 
 .infotech-service-card {
@@ -782,35 +705,15 @@ svg {
 }
 .infotech-service-footer {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  color: #536177;
+  justify-content: center;
+  margin-top: 20px;
+}
+.infotech-service-quote {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 16px;
   font-size: 11px;
-  font-weight: 700;
-}
-.infotech-service-footer strong {
-  color: #21ae35;
-  font:
-    600 15px "Manrope",
-    sans-serif;
-}
-.infotech-service-arrow {
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  color: #11862a;
-  background: #ecf9eb;
-  border-radius: 50%;
-  transition:
-    color 180ms ease,
-    background 180ms ease,
-    transform 180ms ease;
-}
-.infotech-service-card:hover .infotech-service-arrow {
-  color: #fff;
-  background: #24c53a;
-  transform: translateX(3px);
+  white-space: nowrap;
 }
 
 .infotech-process-section {
@@ -997,21 +900,26 @@ svg {
 }
 
 .quote-back-link {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 7px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   color: #dce7f8;
   font-size: 13px;
   font-weight: 700;
 }
 
 .quote-request-hero h1 {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   font:
     800 clamp(38px, 5vw, 56px) / 1.08 "Manrope",
     sans-serif;
   letter-spacing: -1.5px;
+}
+
+.quote-request-hero h1 span {
+  color: #69ee63;
 }
 
 .quote-request-hero p {
@@ -1095,27 +1003,38 @@ svg {
 }
 
 .quote-form-card {
-  padding: 32px;
+  padding: clamp(24px, 3vw, 36px);
   background: #fff;
-  border: 1px solid #e6ebf2;
-  border-radius: 18px;
-  box-shadow: 0 16px 42px rgba(12, 36, 64, 0.08);
+  border: 1px solid #e2e9f2;
+  border-radius: 20px;
+  box-shadow: 0 20px 48px rgba(12, 36, 64, 0.09);
 }
 
 .quote-form-heading {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  padding: 22px;
+  background: linear-gradient(135deg, #f5f8ff, #f4fbf2);
+  border: 1px solid #e8eef5;
+  border-radius: 14px;
 }
 
 .quote-form-heading .eyebrow {
-  margin-bottom: 8px;
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  color: #267c35;
+  background: #e8f7e6;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.7px;
 }
 
 .quote-form-heading h2,
 .quote-form-confirmation h2 {
-  margin: 0 0 7px;
+  margin: 0 0 9px;
   color: var(--navy);
   font:
-    800 25px/1.25 "Manrope",
+    800 clamp(22px, 2.4vw, 28px) / 1.2 "Manrope",
     sans-serif;
 }
 
@@ -1134,13 +1053,13 @@ svg {
 }
 
 .quote-form-section {
-  margin-top: 30px;
-  padding-top: 25px;
-  border-top: 1px solid #e8edf3;
+  margin-top: 32px;
+  padding-top: 26px;
+  border-top: 1px solid #e9eef4;
 }
 
 .quote-form-section > h3 {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   color: #172d56;
   font:
     800 18px "Manrope",
@@ -1170,12 +1089,12 @@ svg {
 .quote-field select,
 .quote-field textarea {
   width: 100%;
-  min-height: 46px;
-  padding: 12px 13px;
+  min-height: 48px;
+  padding: 13px 14px;
   color: #17233a;
   background: #fff;
-  border: 1px solid #d8e0ea;
-  border-radius: 9px;
+  border: 1px solid #d5deea;
+  border-radius: 10px;
   outline: none;
   font:
     400 14px "DM Sans",
@@ -1192,16 +1111,16 @@ svg {
 
 .quote-choice-fieldset {
   min-width: 0;
-  margin: 24px 0 0;
+  margin: 28px 0 0;
   padding: 0;
   border: 0;
 }
 
 .quote-choice-fieldset legend {
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: #344054;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.5;
 }
@@ -1209,32 +1128,47 @@ svg {
 .quote-choice-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
+  gap: 10px;
 }
 
 .quote-option-card {
-  min-height: 44px;
+  min-height: 48px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
-  padding: 12px;
+  padding: 12px 14px;
   color: #46546a;
-  background: #fbfcfe;
-  border: 1px solid #e4eaf1;
-  border-radius: 9px;
+  background: #fcfdff;
+  border: 1px solid #e3eaf2;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.4;
   transition:
+    transform 150ms ease,
     border-color 150ms ease,
-    background 150ms ease;
+    background 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.quote-option-card:hover,
+.quote-feature-option:hover {
+  border-color: #9bd693;
+  background: #f7fcf5;
+}
+
+.quote-option-card:has(input:focus-visible),
+.quote-feature-option:has(input:focus-visible) {
+  outline: 3px solid rgba(55, 184, 58, 0.2);
+  outline-offset: 2px;
 }
 
 .quote-option-card:has(input:checked) {
   color: #1d5426;
   background: #f0faed;
   border-color: #7bcf70;
+  box-shadow: inset 0 0 0 1px rgba(75, 181, 62, 0.12);
 }
 
 .quote-option-card input,
@@ -1249,20 +1183,32 @@ svg {
 .quote-feature-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 7px 12px;
+  gap: 8px 10px;
 }
 
 .quote-feature-option {
   min-width: 0;
   display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  padding: 6px 2px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
   color: #46546a;
+  background: #fcfdff;
+  border: 1px solid #e8edf3;
+  border-radius: 9px;
   cursor: pointer;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.4;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.quote-feature-option:has(input:checked) {
+  color: #1d5426;
+  background: #f0faed;
+  border-color: #7bcf70;
 }
 
 .quote-form-error {
@@ -1287,7 +1233,7 @@ svg {
 .quote-form-submit-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 18px;
   margin-top: 22px;
   padding-top: 20px;
@@ -1325,6 +1271,16 @@ svg {
 .quote-submit-button:hover {
   transform: translateY(-2px);
   background: #176f26;
+}
+
+.quote-submit-button:focus-visible {
+  outline: 3px solid rgba(55, 184, 58, 0.3);
+  outline-offset: 3px;
+}
+
+.quote-submit-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
 }
 
 .quote-form-confirmation {
@@ -3121,6 +3077,9 @@ svg {
   .infotech-hero-copy h1 {
     font-size: 38px;
   }
+  .infotech-hero-copy h2 {
+    font-size: 20px;
+  }
   .infotech-visual {
     height: 310px;
   }
@@ -3153,11 +3112,6 @@ svg {
     align-items: flex-start;
     flex-direction: column;
   }
-  .infotech-location {
-    width: 100%;
-    justify-content: flex-start;
-    text-align: left;
-  }
   .infotech-services-grid {
     grid-template-columns: 1fr;
   }
@@ -3186,7 +3140,10 @@ svg {
     padding: 46px 0 52px;
   }
   .quote-back-link {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
+  }
+  .quote-request-hero h1 {
+    font-size: 38px;
   }
   .quote-request-content {
     padding: 42px 0 54px;

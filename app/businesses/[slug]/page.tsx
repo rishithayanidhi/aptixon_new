@@ -100,27 +100,20 @@ export default async function BusinessPage({
         <section className="infotech-hero">
           <div className="container infotech-hero-grid">
             <div className="infotech-hero-copy">
-              <span className="infotech-pill">APTIXON INFOTECH</span>
               <h1>
-                End-to-End Digital
-                <br />
-                Solutions for Modern
-                <br />
-                <strong>Businesses</strong>
+                Aptixon <span>Infotech</span>
               </h1>
+              <h2>
+                End-to-End Digital Solutions
+                <br />
+                for Modern Businesses
+              </h2>
               <p>
                 We design, develop and deliver reliable, scalable and
                 cost-effective technology solutions to help your business grow
                 in the digital world.
               </p>
               <div className="infotech-actions">
-                <Link
-                  className="infotech-primary"
-                  href="/businesses/infotech/request-a-quote"
-                >
-                  Request a Quote
-                  <ArrowRight size={17} />
-                </Link>
                 <Link className="infotech-secondary" href="/projects">
                   <span>Play</span>
                   Our Work

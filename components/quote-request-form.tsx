@@ -1,8 +1,11 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { infotechQuoteOptions } from "@/lib/infotech-quote-options";
+import {
+  infotechContactNumberPattern,
+  infotechQuoteOptions,
+} from "@/lib/infotech-quote-options";
 
 function ChoiceGroup({
   name,
@@ -38,14 +41,44 @@ export function QuoteRequestForm() {
   const [featureError, setFeatureError] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [toast, setToast] = useState("");
+
+  useEffect(() => {
+    if (!toast) return;
+    const timeoutId = window.setTimeout(() => setToast(""), 4000);
+    return () => window.clearTimeout(timeoutId);
+  }, [toast]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formElement = event.currentTarget;
     const formData = new FormData(formElement);
+    const contactNumber = String(formData.get("contactNumber") ?? "");
+
+    setToast("");
+    if (
+      contactNumber &&
+      !infotechContactNumberPattern.test(contactNumber)
+    ) {
+      setToast("Enter a phone number using 10–15 digits.");
+      formElement.querySelector<HTMLInputElement>(
+        'input[name="contactNumber"]',
+      )?.focus();
+      return;
+    }
+
+    if (!formElement.checkValidity()) {
+      setToast("Please complete all required fields.");
+      formElement.querySelector<HTMLInputElement>(":invalid")?.focus();
+      return;
+    }
 
     if (formData.getAll("features").length === 0) {
       setFeatureError(true);
+      setToast("Select at least one website feature.");
+      formElement.querySelector<HTMLInputElement>(
+        'input[name="features"]',
+      )?.focus();
       return;
     }
 
@@ -125,8 +158,14 @@ export function QuoteRequestForm() {
   return (
     <form
       className="quote-form-card quote-requirements-form"
+      noValidate
       onSubmit={handleSubmit}
     >
+      {toast && (
+        <div className="toast" role="alert" aria-live="assertive">
+          {toast}
+        </div>
+      )}
       <div className="quote-form-heading">
         <span className="eyebrow">APTIXON INFOTECH</span>
         <h2>Website Development Customer Requirement Form</h2>
@@ -172,9 +211,12 @@ export function QuoteRequestForm() {
             <input
               name="contactNumber"
               type="tel"
+              inputMode="numeric"
+              pattern={infotechContactNumberPattern.source}
+              maxLength={15}
               autoComplete="tel"
               required
-              placeholder="Your contact number"
+              placeholder="Enter phone number"
             />
           </label>
         </div>
@@ -263,7 +305,6 @@ export function QuoteRequestForm() {
       </section>
 
       <div className="quote-form-submit-row">
-        <p>Your request is submitted to Aptixon through Google Forms.</p>
         {submitError && (
           <p className="quote-form-error" role="alert">
             {submitError}

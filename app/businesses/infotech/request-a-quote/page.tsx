@@ -9,10 +9,11 @@ export default function InfotechQuotePage() {
         <div className="container">
           <Link className="quote-back-link" href="/businesses/infotech">
             <ArrowLeft size={16} />
-            Aptixon Infotech
+            Back to Infotech
           </Link>
-          <span className="eyebrow light">APTIXON INFOTECH</span>
-          <h1>Website Development Quote</h1>
+          <h1>
+            Aptixon <span>Infotech</span>
+          </h1>
           <p>
             Share your website requirements and help us prepare an accurate
             project estimate.

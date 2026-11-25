@@ -1,3 +1,5 @@
+export const infotechContactNumberPattern = /^[0-9]{10,15}$/;
+
 export const infotechQuoteOptions = {
   websiteTypes: [
     "Business / Corporate Website",

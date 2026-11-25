@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {
+  infotechContactNumberPattern,
   infotechQuoteOptions,
   type InfotechQuoteSubmission,
 } from "@/lib/infotech-quote-options";
@@ -63,6 +64,7 @@ function parseSubmission(value: unknown): InfotechQuoteSubmission | null {
     !emailAddress ||
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress) ||
     !contactNumber ||
+    !infotechContactNumberPattern.test(contactNumber) ||
     additionalRequirements === null ||
     !isOption(websiteType, infotechQuoteOptions.websiteTypes) ||
     !isOption(pageCount, infotechQuoteOptions.pageCounts) ||

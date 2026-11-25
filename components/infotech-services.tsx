@@ -1,68 +1,5 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  BriefcaseBusiness,
-  ChevronDown,
-  Code2,
-  Layers3,
-  PenTool,
-  Settings,
-  Smartphone,
-} from "lucide-react";
-
-const locations = [
-  {
-    country: "United States",
-    code: "US",
-    flag: "🇺🇸",
-    currency: "USD",
-    locale: "en-US",
-    usdRate: 1,
-  },
-  {
-    country: "India",
-    code: "IN",
-    flag: "🇮🇳",
-    currency: "INR",
-    locale: "en-IN",
-    usdRate: 83.5,
-  },
-  {
-    country: "United Kingdom",
-    code: "GB",
-    flag: "🇬🇧",
-    currency: "GBP",
-    locale: "en-GB",
-    usdRate: 0.79,
-  },
-  {
-    country: "Canada",
-    code: "CA",
-    flag: "🇨🇦",
-    currency: "CAD",
-    locale: "en-CA",
-    usdRate: 1.37,
-  },
-  {
-    country: "Australia",
-    code: "AU",
-    flag: "🇦🇺",
-    currency: "AUD",
-    locale: "en-AU",
-    usdRate: 1.53,
-  },
-  {
-    country: "Germany",
-    code: "DE",
-    flag: "🇩🇪",
-    currency: "EUR",
-    locale: "de-DE",
-    usdRate: 0.92,
-  },
-];
+import { ArrowRight, Code2 } from "lucide-react";
 
 const services = [
   {
@@ -70,8 +7,8 @@ const services = [
     description:
       "Build fast, responsive and secure websites for your business.",
     icon: Code2,
-    priceUsd: 12,
   },
+  /*
   {
     title: "Mobile App Development",
     description: "Create high-performance Android & iOS applications.",
@@ -103,19 +40,10 @@ const services = [
     icon: Settings,
     priceUsd: 90,
   },
+  */
 ];
 
 export function InfotechServices() {
-  const [selectedCode, setSelectedCode] = useState("US");
-  const selectedLocation =
-    locations.find((location) => location.code === selectedCode) ??
-    locations[0];
-  const formatter = new Intl.NumberFormat(selectedLocation.locale, {
-    style: "currency",
-    currency: selectedLocation.currency,
-    maximumFractionDigits: 0,
-  });
-
   return (
     <section className="infotech-services-section">
       <div className="container">
@@ -124,55 +52,18 @@ export function InfotechServices() {
             <span className="infotech-heading-line" />
             <h2>Our IT Services</h2>
             <p>
-              Choose from a wide range of technology services tailored to your
-              needs.
+              Explore our web development service and request a tailored quote.
             </p>
-          </div>
-          <div className="infotech-location">
-            <label>
-              <span>Your Location</span>
-              <span className="location-select-wrap">
-                <span className="location-flag" aria-hidden="true">
-                  {selectedLocation.flag}
-                </span>
-                <select
-                  aria-label="Your location"
-                  value={selectedCode}
-                  onChange={(event) => setSelectedCode(event.target.value)}
-                >
-                  {locations.map((location) => (
-                    <option key={location.code} value={location.code}>
-                      {location.country}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown size={14} aria-hidden="true" />
-              </span>
-            </label>
-            <div>
-              <span>Currency</span>
-              <output
-                className="currency-display"
-                aria-live="polite"
-                aria-label={`Currency: ${selectedLocation.currency}`}
-              >
-                {selectedLocation.currency}
-              </output>
-            </div>
           </div>
         </div>
 
         <div className="infotech-services-grid">
           {services.map((service) => {
             const ServiceIcon = service.icon;
-            const price = formatter.format(
-              service.priceUsd * selectedLocation.usdRate,
-            );
 
             return (
-              <Link
+              <article
                 className="infotech-service-card"
-                href="/contact"
                 key={service.title}
               >
                 <div className="infotech-service-top">
@@ -183,20 +74,18 @@ export function InfotechServices() {
                   </div>
                 </div>
                 <div className="infotech-service-footer">
-                  <span>
-                    Starting at <strong>&nbsp;{price}</strong>
-                  </span>
-                  <span className="infotech-service-arrow">
-                    <ArrowRight size={17} />
-                  </span>
+                  <Link
+                    className="infotech-primary infotech-service-quote"
+                    href="/businesses/infotech/request-a-quote"
+                  >
+                    Request a Quote
+                    <ArrowRight size={15} />
+                  </Link>
                 </div>
-              </Link>
+              </article>
             );
           })}
         </div>
-        <p className="infotech-currency-note">
-          Prices are indicative conversions from USD and may vary.
-        </p>
       </div>
     </section>
   );
