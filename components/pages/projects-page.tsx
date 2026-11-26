@@ -22,7 +22,7 @@ const projects = [
     image: "/images/aptixon-events.png",
   },
 ];
-export default function Projects() {
+export default function ProjectsPage() {
   return (
     <main className="projects-page">
       <section className="page-hero projects-hero">

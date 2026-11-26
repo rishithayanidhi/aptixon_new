@@ -1,5 +1,5 @@
 import { Target, Eye, HeartHandshake, Lightbulb } from "lucide-react";
-export default function About() {
+export default function AboutPage() {
   return (
     <main className="about-page">
       <section className="page-hero about-hero">

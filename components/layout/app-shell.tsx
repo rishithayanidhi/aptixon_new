@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { SiteHeader } from "@/components/site";
+import { Navigation } from "@/components/layout/navigation";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -14,9 +14,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {!isAuth && <SiteHeader />}
+      {!isAuth && <Navigation />}
       {children}
-      {/* {!isAuth && <SiteFooter />} */}
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-export default function Register() {
+export default function RegisterPage() {
   const [code, setCode] = useState("");
   const [valid, setValid] = useState(false);
   const [done, setDone] = useState(false);

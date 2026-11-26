@@ -32,7 +32,7 @@ const roles = [
     icon: CalendarDays,
   },
 ];
-export default function Careers() {
+export default function CareersPage() {
   const [sent, setSent] = useState(false);
   return (
     <main className="careers-page">

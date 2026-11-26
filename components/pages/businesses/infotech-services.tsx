@@ -8,39 +8,6 @@ const services = [
       "Build fast, responsive and secure websites for your business.",
     icon: Code2,
   },
-  /*
-  {
-    title: "Mobile App Development",
-    description: "Create high-performance Android & iOS applications.",
-    icon: Smartphone,
-    priceUsd: 60,
-  },
-  {
-    title: "Software Development",
-    description:
-      "Custom software and business applications for your unique needs.",
-    icon: Layers3,
-    priceUsd: 120,
-  },
-  {
-    title: "UI/UX Design",
-    description: "User-centered, modern and intuitive digital experiences.",
-    icon: PenTool,
-    priceUsd: 30,
-  },
-  {
-    title: "IT Consulting",
-    description: "Expert technology advice to solve your business challenges.",
-    icon: BriefcaseBusiness,
-    priceUsd: 36,
-  },
-  {
-    title: "Automation Solutions",
-    description: "Automate workflows and improve team efficiency.",
-    icon: Settings,
-    priceUsd: 90,
-  },
-  */
 ];
 
 export function InfotechServices() {

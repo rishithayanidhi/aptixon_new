@@ -42,7 +42,7 @@ const initialValues: Values = {
   additional: "",
 };
 
-export function QuoteRequestForm({ onSubmit }: Props) {
+export default function QuoteRequestForm({ onSubmit }: Props) {
   const [values, setValues] = useState(initialValues);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");

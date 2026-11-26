@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ShieldCheck, Users, Briefcase, ArrowRight } from "lucide-react";
-export default function Login() {
+export default function LoginPage() {
   const [role, setRole] = useState("Employee");
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");

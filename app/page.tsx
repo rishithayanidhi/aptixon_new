@@ -1,159 +1,77 @@
-import Link from "next/link";
-import {
-  ArrowRight,
-  Code2,
-  Trophy,
-  Music2,
-  CheckCircle2,
-  ArrowUpRight,
-} from "lucide-react";
-const businesses = [
-  {
-    name: "Aptixon Infotech",
-    tag: "Technology That Moves Business Forward.",
-    desc: "Digital products and technology services designed to help organizations move forward.",
-    items: [
-      "Software Development",
-      "Web & Mobile Applications",
-      "IT Consulting",
-      "Automation Solutions",
-      "Digital Transformation",
-    ],
-    tone: "blue",
-    icon: Code2,
-    href: "/businesses/infotech",
-  },
-  {
-    name: "Aptixon Sports and Games Ventures",
-    tag: "Building the Future of Sports.",
-    desc: "Creating opportunities through sports, leagues and grassroots development.",
-    items: [
-      "Football League Management",
-      "Sports Events",
-      "Youth Development",
-      "Sports Tournaments",
-      "Sports Infrastructure & Partnerships",
-    ],
-    tone: "green",
-    icon: Trophy,
-    href: "/businesses/sports",
-  },
-  {
-    name: "Aptixon EVENTRA",
-    tag: "Every Event. One Experience.",
-    desc: "End-to-end event experiences powered by thoughtful planning and technology.",
-    items: [
-      "Event Management",
-      "Event Planning",
-      "Event Registration",
-      "Event Ticketing",
-      "Event Technology",
-    ],
-    tone: "purple",
-    icon: Music2,
-    href: "/businesses/eventra",
-  },
-];
-export default function Home() {
+import type { ComponentType } from "react";
+import { notFound } from "next/navigation";
+import { Dashboard } from "@/components/pages/portal/dashboard";
+import AboutPage from "@/components/pages/about-page";
+import CareersPage from "@/components/pages/careers-page";
+import ContactPage from "@/components/pages/contact-page";
+import HomePage from "@/components/pages/home-page";
+import LoginPage from "@/components/pages/login-page";
+import ProjectsPage from "@/components/pages/projects-page";
+import RegisterPage from "@/components/pages/register-page";
+import BusinessHomePage from "@/components/pages/businesses/business-home-page";
+import EventraPage from "@/components/pages/businesses/eventra-page";
+import InfotechPage from "@/components/pages/businesses/infotech-page";
+import InfotechQuoteForm from "@/components/pages/businesses/infotech-quote-form";
+import SportsPage from "@/components/pages/businesses/sports-page";
+
+function AdminPage() {
+  return <Dashboard kind="admin" />;
+}
+
+function EmployeePage() {
+  return <Dashboard kind="employee" />;
+}
+
+function WorkerPage() {
+  return <Dashboard kind="worker" />;
+}
+
+function InfotechQuotePage() {
   return (
-    <main>
-      <section className="home-hero">
-        <div className="hero-glow" />
-        <div className="container hero-grid">
-          <div className="hero-copy">
-            <span className="eyebrow light">
-              APTIXON · INNOVATION IN MOTION
-            </span>
-            <h1>
-              Building the Future
-              <br />
-              Through <em>Innovation.</em>
-            </h1>
-            <p>
-              Aptixon is a diversified business group delivering technology
-              solutions, developing sporting opportunities and creating
-              innovative event experiences.
-            </p>
-            <div className="hero-actions">
-              <Link className="btn btn-green" href="/businesses">
-                Explore Our Businesses <ArrowRight size={18} />
-              </Link>
-              <Link className="btn btn-outline" href="/about">
-                About Aptixon
-              </Link>
-            </div>
-          </div>
-          <div
-            className="hero-panels"
-            aria-label="Technology, sports and live events"
-          >
-            <div className="panel panel-tech">
-              <Code2 />
-              <span>TECHNOLOGY</span>
-            </div>
-            <div className="panel panel-sport">
-              <Trophy />
-              <span>SPORTS & GAMES</span>
-            </div>
-            <div className="panel panel-event">
-              <Music2 />
-              <span>LIVE EXPERIENCES</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="business-section">
-        <div className="container">
-          <div className="section-heading">
-            <span></span>
-            <h2>
-              A system built with smartness, precision, and advanced technology.
-            </h2>
-            <span></span>
-          </div>
-          <div className="business-grid">
-            {businesses.map((b) => {
-              const Icon = b.icon;
-              return (
-                <article className="business-card" key={b.name}>
-                  <div className={`business-art ${b.tone}`}>
-                    <Icon size={34} />
-                    <h3>{b.name}</h3>
-                  </div>
-                  <div className="business-body">
-                    <h4>{b.tag}</h4>
-                    <p>{b.desc}</p>
-                    <ul className="business-services-preview">
-                      {b.items.slice(0, 3).map((i) => (
-                        <li key={i}>
-                          <CheckCircle2 size={17} />
-                          {i}
-                        </li>
-                      ))}
-                    </ul>
-                    <Link className={`btn card-btn ${b.tone}`} href={b.href}>
-                      Explore {b.name.split(" ")[1] || "More"}{" "}
-                      <ArrowRight size={17} />
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-      <section className="cta-band">
-        <div className="container cta-inner">
-          <div>
-            <span className="eyebrow light">LET'S BUILD WHAT'S NEXT</span>
-            <h2>Have an idea worth bringing to life?</h2>
-            <p>Let's create something meaningful together.</p>
-          </div>
-          <Link className="btn btn-green" href="/contact">
-            Start a Conversation <ArrowUpRight size={18} />
-          </Link>
-        </div>
-      </section>
+    <main className="quote-request-page">
+      <InfotechQuoteForm />
     </main>
   );
+}
+
+const routePages: Record<string, ComponentType> = {
+  "": HomePage,
+  about: AboutPage,
+  admin: AdminPage,
+  businesses: BusinessHomePage,
+  "businesses/eventra": EventraPage,
+  "businesses/infotech": InfotechPage,
+  "businesses/infotech/request-a-quote": InfotechQuotePage,
+  "businesses/sports": SportsPage,
+  careers: CareersPage,
+  contact: ContactPage,
+  employee: EmployeePage,
+  login: LoginPage,
+  projects: ProjectsPage,
+  register: RegisterPage,
+  worker: WorkerPage,
+};
+
+export function generateStaticParams() {
+  return Object.keys(routePages).map((path) => ({
+    route: path === "" ? [] : path.split("/"),
+  }));
+}
+
+export const dynamicParams = false;
+
+export default async function MainPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ route?: string | string[] }>;
+}) {
+  const { route = "" } = await searchParams;
+  const path = Array.isArray(route) ? route.join("/") : route;
+  const Page = routePages[path];
+
+  if (!Page) {
+    notFound();
+  }
+
+  return <Page />;
 }

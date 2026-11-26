@@ -1,8 +1,10 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Mail } from "lucide-react";
+import { ChevronDown, Mail, Menu, X } from "lucide-react";
+
 const links = [
   ["Home", "/"],
   ["About Us", "/about"],
@@ -16,7 +18,8 @@ const businessLinks = [
   ["Aptixon Sports", "/businesses/sports"],
   ["Aptixon EVENTRA", "/businesses/eventra"],
 ];
-export function SiteHeader() {
+
+export function Navigation() {
   const [open, setOpen] = useState(false);
   const [businessMenuOpen, setBusinessMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -46,11 +49,11 @@ export function SiteHeader() {
           {open ? <X /> : <Menu />}
         </button>
         <nav className={open ? "nav-links open" : "nav-links"}>
-          {links.map(([n, u]) =>
-            n === "Our Businesses" ? (
+          {links.map(([name, href]) =>
+            name === "Our Businesses" ? (
               <div
                 className={`nav-dropdown ${businessMenuOpen ? "open" : "closed"}`}
-                key={u}
+                key={href}
                 onMouseEnter={() => setBusinessMenuOpen(true)}
                 onMouseLeave={() => setBusinessMenuOpen(false)}
               >
@@ -58,11 +61,9 @@ export function SiteHeader() {
                   type="button"
                   className={isActive("/businesses") ? "active" : undefined}
                   aria-expanded={businessMenuOpen}
-                  onClick={() => {
-                    setBusinessMenuOpen((current) => !current);
-                  }}
+                  onClick={() => setBusinessMenuOpen((current) => !current)}
                 >
-                  {n}
+                  {name}
                   <ChevronDown size={14} />
                 </button>
                 <div className="nav-dropdown-menu">
@@ -82,13 +83,13 @@ export function SiteHeader() {
               </div>
             ) : (
               <Link
-                key={u}
-                href={u}
-                className={isActive(u) ? "active" : undefined}
-                aria-current={isActive(u) ? "page" : undefined}
+                key={href}
+                href={href}
+                className={isActive(href) ? "active" : undefined}
+                aria-current={isActive(href) ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >
-                {n}
+                {name}
               </Link>
             ),
           )}
@@ -98,47 +99,5 @@ export function SiteHeader() {
         </Link>
       </div>
     </header>
-  );
-}
-export function SiteFooter() {
-  return (
-    <footer className="footer">
-      <div className="footer-inner">
-        <div>
-          <Link href="/" className="footer-brand">
-            <img src="/images/aptixon-logo.jpeg" alt="Aptixon" />
-          </Link>
-          <p>Together We Build Better World.</p>
-        </div>
-        <div className="footer-links">
-          <Link href="/about">About</Link>
-          <Link href="/businesses">Businesses</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/careers">Careers</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/login">Unified Portal</Link>
-        </div>
-        <small>© 2026 Aptixon. All rights reserved.</small>
-      </div>
-    </footer>
-  );
-}
-export function PageHero({
-  eyebrow,
-  title,
-  desc,
-}: {
-  eyebrow: string;
-  title: string;
-  desc: string;
-}) {
-  return (
-    <section className="page-hero">
-      <div className="container">
-        <span className="eyebrow">{eyebrow}</span>
-        <h1>{title}</h1>
-        <p>{desc}</p>
-      </div>
-    </section>
   );
 }

@@ -28,7 +28,7 @@ const businesses = [
   },
 ];
 
-export default function BusinessesOverview() {
+export default function BusinessHomePage() {
   return (
     <main>
       <section className="business-overview-hero">

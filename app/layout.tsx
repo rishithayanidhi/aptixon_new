@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AppShell } from "@/components/app-shell";
+import { AppShell } from "@/components/layout/app-shell";
 export const metadata: Metadata = {
   title: "Aptixon | Together We Build Better World",
   description:
