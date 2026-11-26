@@ -11,9 +11,8 @@ npm run dev
 
 Open http://localhost:3000
 
-Set `INFOTECH_QUOTE_FORM_ID` in the server environment to enable Infotech quote
-submissions. Copy `.env.example` to `.env.local` for local development. Keep
-this variable server-side; do not prefix it with `NEXT_PUBLIC_`.
+The Infotech quote form is currently a client-side UI; connect its `onSubmit`
+callback to a backend before using it to receive quote requests.
 
 ## Routes
 

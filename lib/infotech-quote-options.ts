@@ -1,5 +1,3 @@
-export const infotechContactNumberPattern = /^[0-9]{10,15}$/;
-
 export const infotechQuoteOptions = {
   websiteTypes: [
     "Business / Corporate Website",
@@ -90,20 +88,3 @@ export const infotechQuoteOptions = {
     "I need a completely custom design",
   ],
 } as const;
-
-export type InfotechQuoteSubmission = {
-  fullName: string;
-  companyName: string;
-  emailAddress: string;
-  contactNumber: string;
-  websiteType: string;
-  pageCount: string;
-  features: string[];
-  budget: string;
-  timeline: string;
-  domainStatus: string;
-  hostingStatus: string;
-  contentStatus: string;
-  designPreference: string;
-  additionalRequirements: string;
-};
