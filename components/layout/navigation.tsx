@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronDown, Mail, Menu, X } from "lucide-react";
+import { INFOTECH_LOGIN_HREF } from "@/lib/auth";
 
 const links = [
   ["Home", "/"],
@@ -16,7 +17,7 @@ const links = [
 ];
 
 const businessLinks = [
-  ["Aptixon Infotech", "/businesses/infotech"],
+  ["Aptixon Infotech", INFOTECH_LOGIN_HREF],
   ["Aptixon Sports", "/businesses/sports"],
   ["Aptixon EVENTRA", "/businesses/eventra"],
 ];

@@ -5614,3 +5614,615 @@ svg {
     opacity: 0.6;
   }
 }
+
+/* Login page styles */
+.page {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 5vw;
+  background: #031a35;
+  color: #f5f8fc;
+  isolation: isolate;
+}
+
+.page::before {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 92% 8%, rgba(0, 205, 122, .34), transparent 27%),
+    radial-gradient(ellipse at 4% 78%, rgba(0, 190, 138, .28), transparent 30%),
+    radial-gradient(ellipse at 56% 55%, rgba(0, 105, 139, .2), transparent 48%),
+    linear-gradient(115deg, #03152f 0%, #06284b 52%, #031733 100%);
+  content: "";
+}
+
+.topWave {
+  position: absolute;
+  z-index: -1;
+  top: -220px;
+  right: -130px;
+  width: 650px;
+  height: 300px;
+  border: 2px solid rgba(19, 178, 72, .65);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  box-shadow: 0 15px 45px rgba(20, 180, 76, .08);
+}
+
+.rightGlow {
+  position: absolute;
+  z-index: -2;
+  right: -190px;
+  bottom: 4%;
+  width: 500px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(0, 205, 122, .16);
+  filter: blur(70px);
+}
+
+.layout {
+  display: grid;
+  width: min(1160px, 100%);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  align-items: center;
+  gap: clamp(36px, 5vw, 72px);
+}
+
+.intro {
+  padding-left: clamp(0px, 2vw, 24px);
+}
+
+.page .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #f7fbff;
+  text-decoration: none;
+}
+
+.brandMark {
+  width: 68px;
+  height: 62px;
+  color: #0eaa3c;
+}
+
+.brandName {
+  position: relative;
+  font-size: clamp(28px, 2.4vw, 36px);
+  font-weight: 750;
+  letter-spacing: -1.4px;
+  white-space: nowrap;
+}
+
+.brandName strong {
+  color: #079b37;
+  font-weight: 750;
+}
+
+.brandName sup {
+  position: relative;
+  top: -12px;
+  margin-left: 3px;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.brandRule {
+  width: 64px;
+  height: 5px;
+  margin: 34px 0 24px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #05a83b, #53df69);
+}
+
+.intro h1 {
+  margin: 0;
+  color: #f7fbff;
+  font-size: clamp(36px, 3.3vw, 48px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1.6px;
+}
+
+.intro h1 span {
+  color: #0a9f3a;
+}
+
+.introText {
+  margin: 18px 0 0;
+  color: rgba(242, 247, 255, .84);
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.55;
+}
+
+.loginCard {
+  width: 100%;
+  padding: clamp(24px, 2.3vw, 34px);
+  border: 1px solid rgba(23, 174, 77, .28);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow:
+    0 22px 65px rgba(20, 80, 48, .10),
+    0 5px 18px rgba(20, 80, 48, .05),
+    inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+.cardHeader {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.cardHeader h2 {
+  margin: 0;
+  color: #101d35;
+  font-size: clamp(32px, 2.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -1.6px;
+}
+
+.cardHeader p {
+  margin: 6px 0 0;
+  color: #101d35;
+  font-size: clamp(18px, 1.5vw, 23px);
+  font-weight: 650;
+}
+
+.cardHeader p span {
+  color: #078d35;
+}
+
+.accountSwitch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 4px;
+  border: 1px solid #d6deea;
+  border-radius: 999px;
+  background: #f5f7fa;
+}
+
+.tab,
+.activeTab {
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+.tab {
+  color: #101d35;
+  background: transparent;
+}
+
+.activeTab {
+  color: #fff;
+  background: linear-gradient(110deg, #49d92c, #079d3c);
+  box-shadow: 0 7px 16px rgba(11, 166, 59, .22);
+}
+
+.tab svg,
+.activeTab svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formMessage {
+  margin: 0;
+  color: #b42318;
+  font-size: 14px;
+  text-align: center;
+}
+
+.inputWrap {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  border: 1.5px solid #cbd5e2;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(16, 29, 53, .025);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.inputWrap:focus-within {
+  border-color: #16ae49;
+  box-shadow: 0 0 0 4px rgba(22, 174, 73, .10);
+}
+
+.inputWrap > svg {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: #15233b;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.inputWrap input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: #15233b;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+}
+
+.inputWrap input::placeholder {
+  color: #596477;
+  opacity: 1;
+}
+
+.visibilityButton {
+  display: grid;
+  width: 30px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #15233b;
+  cursor: pointer;
+}
+
+.visibilityButton svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.forgotRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -2px;
+}
+
+.forgotRow a,
+.forgotRow button,
+.registerText a {
+  color: #078d35;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.forgotRow a,
+.forgotRow button {
+  font-size: 17px;
+}
+
+.forgotRow button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.forgotRow a:hover,
+.forgotRow button:hover,
+.registerText a:hover {
+  text-decoration: underline;
+}
+
+.signInButton {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(105deg, #43d92d 0%, #00a83f 58%, #00853c 100%);
+  box-shadow: 0 9px 18px rgba(8, 153, 57, .18);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 750;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.signInButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 13px 22px rgba(8, 153, 57, .24);
+}
+
+.signInButton span {
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.separator {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 4px 14px;
+  color: #101d35;
+  font-size: 15px;
+}
+
+.separator span {
+  height: 1.5px;
+  background: #cbd3de;
+}
+
+.googleButton {
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1.5px solid #cbd5e2;
+  border-radius: 999px;
+  background: #fff;
+  color: #101d35;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.googleButton:hover {
+  border-color: #16ae49;
+  background: #fbfffc;
+}
+
+.googleG {
+  color: #4285f4;
+  font-size: 29px;
+  font-weight: 800;
+  text-shadow: 1px 1px 0 #34a853, -1px -1px 0 #ea4335;
+}
+
+.registerText {
+  margin: 20px 0 0;
+  color: #344158;
+  text-align: center;
+  font-size: 15px;
+}
+
+.registerText a {
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.bottomWaves {
+  position: absolute;
+  z-index: -1;
+  bottom: -135px;
+  left: -120px;
+  width: 850px;
+  height: 300px;
+  pointer-events: none;
+}
+
+.bottomWaves span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  border: 2px solid rgba(14, 184, 70, .45);
+  border-radius: 50% 55% 0 0;
+  background: linear-gradient(0deg, rgba(58, 217, 103, .16), rgba(58, 217, 103, 0));
+  transform: rotate(-8deg);
+}
+
+.bottomWaves span:nth-child(2) {
+  bottom: 38px;
+  left: 80px;
+  border-color: rgba(74, 221, 117, .32);
+  transform: rotate(-15deg);
+}
+
+.bottomWaves span:nth-child(3) {
+  bottom: 72px;
+  left: 160px;
+  border-color: rgba(74, 221, 117, .22);
+  transform: rotate(-20deg);
+}
+
+@media (max-width: 1050px) {
+  .page {
+    padding: 24px 4vw;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(390px, .95fr);
+    gap: 32px;
+  }
+
+  .brandMark {
+    width: 60px;
+  }
+
+  .brandName {
+    font-size: 29px;
+  }
+
+  .intro h1 {
+    font-size: 40px;
+  }
+
+  .loginCard {
+    padding: 26px 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    min-height: 100svh;
+    padding: 42px 18px;
+  }
+
+  .layout {
+    width: min(520px, 100%);
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .intro {
+    padding: 0 4px;
+    text-align: center;
+  }
+
+  .page .brand {
+    gap: 10px;
+  }
+
+  .brandMark {
+    width: 54px;
+    height: 52px;
+  }
+
+  .brandName {
+    font-size: clamp(25px, 7vw, 34px);
+    letter-spacing: -1px;
+  }
+
+  .brandName sup {
+    top: -8px;
+    font-size: 10px;
+  }
+
+  .brandRule {
+    width: 58px;
+    height: 5px;
+    margin: 22px auto 18px;
+  }
+
+  .intro h1 {
+    font-size: clamp(34px, 8vw, 46px);
+    letter-spacing: -1.5px;
+  }
+
+  .introText {
+    margin-top: 13px;
+    font-size: 15px;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+
+  .loginCard {
+    padding: 28px 20px;
+    border-radius: 26px;
+  }
+
+  .cardHeader {
+    margin-bottom: 25px;
+  }
+
+  .cardHeader h2 {
+    font-size: 37px;
+  }
+
+  .cardHeader p {
+    font-size: 21px;
+  }
+
+  .accountSwitch {
+    margin-bottom: 22px;
+  }
+
+  .tab,
+  .activeTab {
+    min-height: 52px;
+    gap: 8px;
+    font-size: 15px;
+  }
+
+  .tab svg,
+  .activeTab svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .inputWrap {
+    min-height: 56px;
+    gap: 12px;
+    padding: 0 15px;
+    border-radius: 15px;
+  }
+
+  .inputWrap input {
+    font-size: 15px;
+  }
+
+  .signInButton {
+    min-height: 56px;
+    font-size: 18px;
+  }
+
+  .googleButton {
+    min-height: 55px;
+    font-size: 16px;
+  }
+
+  .registerText {
+    margin-top: 23px;
+    font-size: 14px;
+  }
+
+  .registerText a {
+    margin-left: 5px;
+  }
+
+  .bottomWaves {
+    bottom: -190px;
+    left: -240px;
+    opacity: .7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .activeTab,
+  .inputWrap,
+  .signInButton,
+  .googleButton {
+    transition: none;
+  }
+}

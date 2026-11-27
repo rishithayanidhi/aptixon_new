@@ -7,6 +7,8 @@ import {
   CheckCircle2,
   ArrowUpRight,
 } from "lucide-react";
+import { INFOTECH_LOGIN_HREF } from "@/lib/auth";
+
 const businesses = [
   {
     name: "Aptixon Infotech",
@@ -21,7 +23,7 @@ const businesses = [
     ],
     tone: "blue",
     icon: Code2,
-    href: "/businesses/infotech",
+    href: INFOTECH_LOGIN_HREF,
   },
   {
     name: "Aptixon Sports and Games Ventures",
@@ -91,18 +93,30 @@ export default function HomePage() {
             className="hero-panels"
             aria-label="Technology, sports and live events"
           >
-            <div className="panel panel-tech">
+            <Link
+              className="panel panel-tech"
+              href={INFOTECH_LOGIN_HREF}
+              prefetch={false}
+            >
               <Code2 />
               <span>TECHNOLOGY</span>
-            </div>
-            <div className="panel panel-sport">
+            </Link>
+            <Link
+              className="panel panel-sport"
+              href="/businesses/sports"
+              prefetch={false}
+            >
               <Trophy />
               <span>SPORTS & GAMES</span>
-            </div>
-            <div className="panel panel-event">
+            </Link>
+            <Link
+              className="panel panel-event"
+              href="/businesses/eventra"
+              prefetch={false}
+            >
               <Music2 />
               <span>LIVE EXPERIENCES</span>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

@@ -20,11 +20,11 @@ export default function RegisterPage() {
         ) : (
           <>
             <label>
-              AEAR Code
+              Email
               <input
                 value={code}
                 onChange={(e) => setCode(e.target.value.toUpperCase())}
-                placeholder="Enter your AEAR code"
+                placeholder="Enter your email"
               />
             </label>
             <button
@@ -36,8 +36,7 @@ export default function RegisterPage() {
             {valid && (
               <div className="registration-next">
                 <p className="success">
-                  Demo code accepted. Production will fetch your pre-provisioned
-                  AEID, name and email.
+                  Code verified. Please set your password to continue.
                 </p>
                 <label>
                   New password

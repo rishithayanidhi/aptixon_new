@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Code2, Music2, Trophy } from "lucide-react";
+import { INFOTECH_LOGIN_HREF } from "@/lib/auth";
 
 const businesses = [
   {
     name: "Aptixon Infotech",
     description:
       "Technology solutions, digital products and modern software for growing organizations.",
-    href: "/businesses/infotech",
+    href: INFOTECH_LOGIN_HREF,
     icon: Code2,
     tone: "blue",
   },

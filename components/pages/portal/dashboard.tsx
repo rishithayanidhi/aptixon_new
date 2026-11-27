@@ -18,6 +18,8 @@ import {
   MapPin,
   Trophy,
 } from "lucide-react";
+import { APTIXON_AUTH_SESSION_KEY } from "@/lib/auth";
+
 const events = [
   ["Kerala Super League", "Kochi · 24 Nov 2026", "Upcoming"],
   ["Youth Football Championship", "Alappuzha · 02 Dec 2026", "Upcoming"],
@@ -92,7 +94,10 @@ export function Dashboard({ kind }: { kind: "admin" | "employee" | "worker" }) {
         </nav>
         <button
           className="dash-logout"
-          onClick={() => (location.href = "/login")}
+          onClick={() => {
+            sessionStorage.removeItem(APTIXON_AUTH_SESSION_KEY);
+            location.href = "/login";
+          }}
         >
           <LogOut /> Sign out
         </button>
