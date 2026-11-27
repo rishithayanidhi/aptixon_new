@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model WebsiteRequirement {
+  id              String @id @default(uuid()) @db.Uuid
+  referenceNumber String @unique @db.VarChar(30)
+
+  fullName    String  @db.VarChar(150)
+  companyName String? @db.VarChar(150)
+  email       String  @db.VarChar(255)
+  phone       String  @db.VarChar(30)
+
+  websiteType String   @db.VarChar(100)
+  pageCount   String   @db.VarChar(50)
+  features    String[]
+
+  budget           String @db.VarChar(100)
+  timeline         String @db.VarChar(100)
+  domainStatus     String @db.VarChar(100)
+  hostingStatus    String @db.VarChar(100)
+  contentStatus    String @db.VarChar(100)
+  designPreference String @db.VarChar(100)
+
+  additionalRequirements String? @db.Text
+  status                 String  @default("NEW") @db.VarChar(30)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model ContactSubmission {
+  id String @id @default(uuid()) @db.Uuid
+
+  fullName String  @db.VarChar(150)
+  email    String  @db.VarChar(255)
+  phone    String? @db.VarChar(30)
+  subject  String? @db.VarChar(200)
+  message  String  @db.Text
+
+  status String @default("NEW") @db.VarChar(30)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}

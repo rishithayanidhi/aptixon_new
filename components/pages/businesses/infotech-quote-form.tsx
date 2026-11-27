@@ -69,20 +69,42 @@ export default function QuoteRequestForm({ onSubmit }: Props) {
       return;
     }
 
-    if (!onSubmit) {
-      setMessage(
-        "Form is ready, but email/API submission is not connected yet. Connect the onSubmit callback to your backend.",
-      );
-      return;
-    }
-
     try {
       setBusy(true);
-      await onSubmit(values);
-      setMessage("Your requirements have been submitted successfully.");
+
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+      if (!apiUrl) {
+        throw new Error("Backend API URL is not configured.");
+      }
+
+      const response = await fetch(`${apiUrl}/api/v1/quotes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Unable to submit your requirements.",
+        );
+      }
+
+      setMessage(
+        `Your requirements were submitted successfully! Your reference number is ${result.data.referenceNumber}`,
+      );
+
       setValues(initialValues);
-    } catch {
-      setMessage("Submission failed. Please try again.");
+    } catch (error) {
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Submission failed. Please try again.",
+      );
     } finally {
       setBusy(false);
     }
