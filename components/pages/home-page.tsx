@@ -75,10 +75,14 @@ export default function HomePage() {
               innovative event experiences.
             </p>
             <div className="hero-actions">
-              <Link className="btn btn-green" href="/businesses">
+              <Link
+                className="btn btn-green"
+                href="/businesses"
+                prefetch={false}
+              >
                 Explore Our Businesses <ArrowRight size={18} />
               </Link>
-              <Link className="btn btn-outline" href="/about">
+              <Link className="btn btn-outline" href="/about" prefetch={false}>
                 About Aptixon
               </Link>
             </div>
@@ -131,7 +135,11 @@ export default function HomePage() {
                         </li>
                       ))}
                     </ul>
-                    <Link className={`btn card-btn ${b.tone}`} href={b.href}>
+                    <Link
+                      className={`btn card-btn ${b.tone}`}
+                      href={b.href}
+                      prefetch={false}
+                    >
                       Explore {b.name.split(" ")[1] || "More"}{" "}
                       <ArrowRight size={17} />
                     </Link>
@@ -149,7 +157,7 @@ export default function HomePage() {
             <h2>Have an idea worth bringing to life?</h2>
             <p>Let's create something meaningful together.</p>
           </div>
-          <Link className="btn btn-green" href="/contact">
+          <Link className="btn btn-green" href="/contact" prefetch={false}>
             Start a Conversation <ArrowUpRight size={18} />
           </Link>
         </div>
