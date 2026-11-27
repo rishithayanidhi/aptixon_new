@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -13,6 +14,7 @@ const links = [
   ["Careers", "/careers"],
   ["Contact Us", "/contact"],
 ];
+
 const businessLinks = [
   ["Aptixon Infotech", "/businesses/infotech"],
   ["Aptixon Sports", "/businesses/sports"],
@@ -23,6 +25,7 @@ export function Navigation() {
   const [open, setOpen] = useState(false);
   const [businessMenuOpen, setBusinessMenuOpen] = useState(false);
   const pathname = usePathname();
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -34,13 +37,20 @@ export function Navigation() {
   return (
     <header className="site-header">
       <div className="nav-wrap">
-        <Link href="/" className="brand" aria-label="Aptixon home">
+        <Link
+          href="/"
+          prefetch={false}
+          className="brand"
+          aria-label="Aptixon home"
+        >
           <img
             src="/images/aptixon-logo.jpeg"
             alt="Aptixon - Together We Build Better World"
           />
         </Link>
+
         <div className="brand-divider" />
+
         <button
           className="mobile-toggle"
           onClick={() => setOpen(!open)}
@@ -48,6 +58,7 @@ export function Navigation() {
         >
           {open ? <X /> : <Menu />}
         </button>
+
         <nav className={open ? "nav-links open" : "nav-links"}>
           {links.map(([name, href]) =>
             name === "Our Businesses" ? (
@@ -66,11 +77,13 @@ export function Navigation() {
                   {name}
                   <ChevronDown size={14} />
                 </button>
+
                 <div className="nav-dropdown-menu">
                   {businessLinks.map(([businessName, businessHref]) => (
                     <Link
                       key={businessHref}
                       href={businessHref}
+                      prefetch={false}
                       onClick={() => {
                         setBusinessMenuOpen(false);
                         setOpen(false);
@@ -85,6 +98,7 @@ export function Navigation() {
               <Link
                 key={href}
                 href={href}
+                prefetch={false}
                 className={isActive(href) ? "active" : undefined}
                 aria-current={isActive(href) ? "page" : undefined}
                 onClick={() => setOpen(false)}
@@ -94,7 +108,12 @@ export function Navigation() {
             ),
           )}
         </nav>
-        <Link className="btn btn-green nav-cta" href="/contact">
+
+        <Link
+          className="btn btn-green nav-cta"
+          href="/contact"
+          prefetch={false}
+        >
           <Mail size={17} /> Get in Touch
         </Link>
       </div>
